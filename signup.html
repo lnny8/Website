@@ -5,27 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.28.5/dist/umd/supabase.min.js"></script>
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://your-project-id.supabase.co'; // Ersetze "your-project-id" mit deinem tatsächlichen Supabase-Projekt-ID
+        const SUPABASE_ANON_KEY = 'your-anon-key'; // Füge hier deinen anon-Schlüssel ein
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function signUp(event) {
+            event.preventDefault();
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwörter stimmen nicht überein.');
+                return;
+            }
+
+            try {
+                const { user, error } = await supabase.auth.signUp({
+                    email: username,
+                    password: password
+                });
+
+                if (error) {
+                    alert('Fehler bei der Registrierung: ' + error.message);
+                } else {
+                    alert('Registrierung erfolgreich! Bitte überprüfen Sie Ihre E-Mail zur Bestätigung.');
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Unerwarteter Fehler:', error);
+                alert('Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <div class="container mx-auto mt-12">
         <div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Account erstellen</h2>
-            <form>
+            <form onsubmit="signUp(event)">
                 <div class="mb-4">
-                    <label for="newUsername" class="block text-gray-700">Benutzername:</label>
-                    <input type="text" id="newUsername" name="newUsername" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                    <label for="newUsername" class="block text-gray-700">E-Mail:</label>
+                    <input type="email" id="newUsername" name="newUsername" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full" required>
                 </div>
                 <div class="mb-4">
                     <label for="newPassword" class="block text-gray-700">Passwort:</label>
-                    <input type="password" id="newPassword" name="newPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                    <input type="password" id="newPassword" name="newPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full" required>
                 </div>
                 <div class="mb-4">
                     <label for="confirmPassword" class="block text-gray-700">Passwort bestätigen:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full" required>
                 </div>
                 <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded w-full">Erstellen</button>
             </form>
-            <p class="mt-6 text-center text-gray-600">Bereits einen Account? <a href="login.html" class="text-blue-500 hover:underline">Anmelden</a></p>
+            <p class="mt-6 text-center text-gray-600">Bereitts einen Account? <a href="login.html" class="text-blue-500 hover:underline">Anmelden</a></p>
         </div>
     </div>
 </body>

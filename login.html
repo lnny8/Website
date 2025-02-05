@@ -21,51 +21,8 @@
                 </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Anmelden</button>
             </form>
-            <p class="mt-6 text-center text-gray-600">Noch keinen Account? <a href="signup.html" id="registerLink" class="text-blue-500 hover:underline">Erstellen</a></p>
+            <p class="mt-6 text-center text-gray-600">Noch keinen Account? <a href="signup.html" class="text-blue-500 hover:underline">Erstellen</a></p>
         </div>
     </div>
-
-    <div id="registerModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-xl shadow-md max-w-md w-full">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Account erstellen</h2>
-            <form>
-                <div class="mb-4">
-                    <label for="newUsername" class="block text-gray-700">Benutzername:</label>
-                    <input type="text" id="newUsername" name="newUsername" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="newPassword" class="block text-gray-700">Passwort:</label>
-                    <input type="password" id="newPassword" name="newPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="confirmPassword" class="block text-gray-700">Passwort bestätigen:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
-                </div>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded w-full">Erstellen</button>
-            </form>
-            <button id="closeRegisterModal" class="mt-4 text-gray-600 hover:underline w-full text-center">Abbrechen</button>
-        </div>
-    </div>
-
-    <script>
-        var registerLink = document.getElementById("registerLink");
-        var registerModal = document.getElementById("registerModal");
-        var closeRegisterModal = document.getElementById("closeRegisterModal");
-
-        registerLink.onclick = function(event) {
-            event.preventDefault();
-            registerModal.classList.remove("hidden");
-        }
-
-        closeRegisterModal.onclick = function() {
-            registerModal.classList.add("hidden");
-        }
-
-        window.onclick = function(event) {
-            if (event.target == registerModal) {
-                registerModal.classList.add("hidden");
-            }
-        }
-    </script>
 </body>
 </html>
