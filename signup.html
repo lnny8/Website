@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto mt-12">
+        <div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Account erstellen</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="newUsername" class="block text-gray-700">Benutzername:</label>
+                    <input type="text" id="newUsername" name="newUsername" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="newPassword" class="block text-gray-700">Passwort:</label>
+                    <input type="password" id="newPassword" name="newPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-gray-700">Passwort bestätigen:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="border border-gray-300 rounded px-3 py-2 mt-1 w-full">
+                </div>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded w-full">Erstellen</button>
+            </form>
+            <p class="mt-6 text-center text-gray-600">Bereits einen Account? <a href="login.html" class="text-blue-500 hover:underline">Anmelden</a></p>
+        </div>
+    </div>
+</body>
+</html>
